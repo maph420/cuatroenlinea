@@ -38,7 +38,7 @@ Una vez tengamos eso configurado, lo podremos inicializar:
 
 Con la línea de arriba puede saltar un error del siguiente estilo:
 
-![Captura de Inconveniente con Composer]("https://image.shutterstock.com/image-photo/little-racon-resting-forest-260nw-1949287636.jpg") 
+![Captura de Inconveniente con Composer](https://cdn.discordapp.com/attachments/676993677704298519/981746461861629962/composer_issue.PNG) 
 
 Esto nos indica la ausencia de un paquete php. En particular, nos falta ``php-xml``. Por lo cual tendremos que instalarlo utilizando el gestor de paquetes correspondiente a nuestra version de Linux. En este caso usaré apt-get (Ubuntu):
 
@@ -76,17 +76,20 @@ Una vez completados todos los pasos de arriba, deberíamos ser capaces de correr
 
 Con ello, podríamos ir a nuestro navegador de preferencia y escribir en la URL ``localhost`` o ``127.0.0.1``, y la pantalla index default de laravel nos tendría que aparecer:
 
-![Página principal de Laravel]("img/laravelindexpage.PNG") 
+![Página principal de Laravel](https://cdn.discordapp.com/attachments/676993677704298519/981780708257333318/laravelindexpage.PNG) 
 
 Pagina "root" de Laravel. El equivalente al *"It works!"* de apache.
 
+<br/>
 
-Una vez en ella, nos dirigiremos a la dirección del cuatro en línea: ``localhost/jugar/1`` o ``127.0.0.1/jugar/1``:
+Una vez en ella, nos dirigiremos a la dirección del cuatro en línea: ``localhost/jugar/1`` o ``127.0.0.1/jugar/1`` :
 
 
-![Cuatro en línea]("img/cuatroenlinealaravel.PNG") 
+![Cuatro en línea](https://cdn.discordapp.com/attachments/676993677704298519/981780708030836826/cuatroenlinealaravel.PNG) 
 
 Cuatro en línea :)
+
+<br/>
 
 > Podemos saber qué documentos están disponibles para ser accedidos inspeccionando con ``cat routes/web.php``
 
@@ -96,4 +99,3 @@ Cuatro en línea :)
 No es considerada una buena práctica cerrar "a la fuerza" el servidor, como por ejemplo, cerrando la consola de comandos. En cambio, podemos hacer un sail down:
 
 > ``sudo ./vendor/bin/sail down``
-
