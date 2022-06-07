@@ -23,7 +23,7 @@ Previamente a correr el proyecto, se deben configurar e instalar todas las depen
 > ``ddev config``
 
 
-Con la cual podremos configurar el contenedor de Docker en el cual se alojará la aplicación. Los campos a informar son: nombre de proyecto (arbitrario), la ruta del documento raíz del proyecto (usualmente se deja el campo vacío) y el tipo de proyecto (el cual **debe** ser laravel).
+Con la cual podremos configurar el contenedor de Docker en el cual se alojará la aplicación. Los campos a informar son: nombre de proyecto (arbitrario, pero despues nos tendremos que acordar de el), la ruta del documento raíz del proyecto (el nombre que aparecera en la URL del host de ddev, por lo general se deja el espacio en blanco) y el tipo de proyecto (el cual **debe** ser laravel).
 
 
 ### 2- Verificación con composer
@@ -65,7 +65,7 @@ Una vez completados todos los pasos de arriba, deberíamos ser capaces de inicia
 
 > ``ddev start``
 
-Con ello, podríamos ir a nuestro navegador de preferencia y escribir en la URL ``https://cuatroenlinea-master.ddev.site``, y la pantalla index default de laravel nos tendría que aparecer:
+Con ello, podríamos ir a nuestro navegador de preferencia y escribir en la URL el nombre de nuestro proyecto de ddev. En mi caso, yo le puse "cuatroenlinea2022", por lo cual mi URL será ``https://cuatroenlinea2022.ddev.site``, y la pantalla index default de laravel nos aparecerá de la siguiente manera:
 
 ![Página principal de Laravel](https://cdn.discordapp.com/attachments/676993677704298519/981780708257333318/laravelindexpage.PNG) 
 
@@ -73,7 +73,7 @@ Pagina "root" de Laravel. El equivalente al *"It works!"* de apache.
 
 <br/>
 
-Una vez en ella, nos dirigiremos a la dirección del cuatro en línea: ``https://cuatroenlinea-master.ddev.site/jugar/1``:
+Una vez en ella, nos dirigiremos a la dirección del cuatro en línea: ``https://cuatroenlinea2022.ddev.site/jugar/1``:
 
 
 ![Cuatro en línea](https://cdn.discordapp.com/attachments/676993677704298519/981780708030836826/cuatroenlinealaravel.PNG) 
