@@ -9,7 +9,7 @@ use Tests\TestCase;
 class ConnTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Check whether connection is set or not
      *
      * @return void
      */
