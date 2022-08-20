@@ -3,7 +3,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class InvalidPieceColorException extends Exception
+class InvalidDimensionsException extends Exception
 {
     /**
      * Report or log an exception.
@@ -12,6 +12,6 @@ class InvalidPieceColorException extends Exception
      */
     public function report()
     {
-        \Log::debug('log message');
+        \Log::debug(__FILE__ . ": " . "Las dimensiones del tablero son muy pequeñas, el tamaño minimo debe ser 4x4");
     }
 }

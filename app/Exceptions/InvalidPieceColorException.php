@@ -12,6 +12,6 @@ class InvalidPieceColorException extends Exception
      */
     public function report()
     {
-        \Log::debug('log message');
+        \Log::debug(__FILE__ . ": " . "Color no reconocido, opciones disponibles: rojo, azul, blanco");
     }
 }
