@@ -10,7 +10,7 @@ class Ficha {
 	public function __construct(String $colorFicha) {
 
 		if (!($colorFicha == 'rojo' || $colorFicha == 'azul' || $colorFicha == 'blanco')) {
-			// excepcion
+			throw new InvalidPieceColorException("Color de ficha no reconocido");
 			return;
 		}
 

@@ -1,0 +1,14 @@
+led to start cuatroenlinea2022: failed to start ddev-router: ComposeCmd failed to run 'COMPOSE_PROJECT_NAME=ddev-cuatroenlinea2022 docker-compose -f /home/maph/.ddev/.router-compose-full.yaml -p ddev-router up -d', action='[-p ddev-router up -d]', err='exit status 1', stdout='', stderr='Container ddev-router  Creating
+Container ddev-router  Created
+Container ddev-router  Starting
+Error response from daemon: Ports are not available: exposing port TCP 127.0.0.1:443 -> 0.0.0.0:0: listen tcp 127.0.0.1:443: bind: Intento de acceso a un socket no permitido por sus permisos de acceso.'
+
+
+
+SOLUCION
+En CMD admin: 
+netstat -aon | find "80"
+
+y para matar el proceso por ID:
+
+taskkill /PID <id_del_proceso> /F

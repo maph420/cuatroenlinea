@@ -24,7 +24,7 @@ class Tablero {
 	public function __construct(int $width, int $height) {
 		
 		if (!($width >= 4 && $height >=4)) {
-			// excepcion
+			throw new InvalidDimensionsException("Dimensiones del tablero inadecuadas");
 			return;
 		}
 
@@ -42,12 +42,12 @@ class Tablero {
 	public function soltar_ficha(int $posY, $posX, Ficha $f) {
 		
 		if (!($posX <= $this->width && $posY <= $this->height)) {
-			// excepcion
+			throw new InvalidPiecePositionException("Se esta intentando colocar una ficha por fuera de las dimensiones del tablero");
 			return;
 		}
 		
 		if ($this->ficha_en_casilla($posX, $posY)) {
-			// excepcion
+			throw new PiecesOverlappingException("Se esta intentando colocar una pieza donde ya se encuentra otra");
 			return;
 		}
 			
