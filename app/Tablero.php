@@ -2,6 +2,15 @@
 // todas las constantes, clases y metodos definidos aca pertenecen al espacio de nombres App
 namespace App;
 
+interface InterfazTablero {
+	public function limpiar_tablero();
+	public function ficha_en_casilla(int $posY, int $posX) : bool;
+	public function soltar_ficha(int $posY, $posX, Ficha $f);
+	public function mostrar_tablero();
+}
+
+
+
 // el tablero usa la convencion de (ordenada, abcisa) no se si dejarlo asi :snamespace App;
 class Tablero {
 
@@ -79,29 +88,6 @@ class Tablero {
 	}
 
 }
-
-// testing
-/*
-
-$ficha = new Ficha("rojo");
-print($ficha->obtener_color());
-
-$ficha2 = new Ficha("azul");
-print($ficha2->obtener_color());
-
-
-$tablero = new Tablero(6,9);
-$tablero->mostrar_tablero();
-$tablero->soltar_ficha(5,1,$ficha);
-
-$tablero->mostrar_tablero();
-
-
-$tablero->soltar_ficha(4,1,$ficha2);
-
-$tablero->mostrar_tablero();
-
-*/
 
 
 ?>
