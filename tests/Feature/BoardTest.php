@@ -1,7 +1,15 @@
 <?php
- 
 namespace Tests\Feature;
- 
+namespace App;
+
+//namespace App\Exceptions;
+
+use Exception;
+use InvalidPieceColorException;
+use InvalidDimensionsException;
+use InvalidPiecePositionException;
+use PiecesOverlappingException;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;

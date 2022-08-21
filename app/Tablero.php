@@ -2,6 +2,11 @@
 // todas las constantes, clases y metodos definidos aca pertenecen al espacio de nombres App
 namespace App;
 
+use Exception;
+use PiecesOverlappingException;
+use InvalidDimensionsException;
+use InvalidPiecePositionException;
+
 interface InterfazTablero {
 	public function limpiar_tablero();
 	public function ficha_en_casilla(int $posY, int $posX) : bool;
@@ -55,7 +60,7 @@ class Tablero {
 			return;
 		}
 		
-		if ($this->ficha_en_casilla($posX, $posY)) {
+		if ($this->ficha_en_casilla($posY, $posX)) {
 			throw new PiecesOverlappingException("Se esta intentando colocar una pieza donde ya se encuentra otra");
 			return;
 		}
@@ -91,3 +96,4 @@ class Tablero {
 
 
 ?>
+

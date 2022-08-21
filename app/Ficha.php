@@ -2,12 +2,15 @@
 // todas las constantes, clases y metodos definidos aca pertenecen al espacio de nombres App
 namespace App;
 
+use Exception;
+use InvalidPieceColorException;
+
 interface InterfazFicha {
 	// por algun motivo tipar con ": String" la interfaz da problemas
 	public function obtener_color();
 }
 
-class Ficha implements InterfazFicha{
+class Ficha implements InterfazFicha {
 
 	protected String $colorFicha;
 	

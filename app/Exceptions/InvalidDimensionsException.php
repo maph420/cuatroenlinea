@@ -3,7 +3,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class InvalidDimensionsException extends Exception
+class InvalidDimensionsException extends \Exception
 {
     /**
      * Report or log an exception.

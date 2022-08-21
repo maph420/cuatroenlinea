@@ -3,7 +3,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class InvalidPiecePositionException extends Exception
+class InvalidPiecePositionException extends \Exception
 {
     /**
      * Report or log an exception.

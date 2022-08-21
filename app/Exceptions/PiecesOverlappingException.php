@@ -3,7 +3,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class PiecesOverlappingException extends Exception
+class PiecesOverlappingException extends \Exception
 {
     /**
      * Report or log an exception.

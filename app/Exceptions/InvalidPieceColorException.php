@@ -1,9 +1,10 @@
 <?php
 namespace App\Exceptions;
 
+
 use Exception;
 
-class InvalidPieceColorException extends Exception
+class InvalidPieceColorException extends \Exception
 {
     /**
      * Report or log an exception.
