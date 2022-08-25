@@ -35,45 +35,38 @@ class BoardTest extends TestCase
 		}
 
 		for ($i=0; $i<8; $i++) {
-			$r1 = rand(0,5);
-			$r2 = rand(0,5);
-			while ($t->ficha_en_casilla($r1,$r2)) {
-				$r1 = rand(0,5);
-				$r2 = rand(0,5);
-			}
-			$t->soltar_ficha($r1,$r2,$fichas[$i]);
+			$r1 = rand(0,$w-1);
+
+			while ($t->ficha_en_casilla($r1,$i)) 
+				$r1 = rand(0,$w-1);
+
+			$t->soltar_ficha($r1,$fichas[$i]);
 		}	
 
 		$azules = 0;
 		$rojas = 0;
 		$blancas = 0;
 
-
-		for ($i=0; $i<$w; $i++) {
-			for ($j=0; $j<$h; $j++) {
-				if (($t->tablero[$i][$j]->obtener_color()) == 'rojo')
+		for ($i=0; $i<$h; $i++) {
+			for ($j=0; $j<$w; $j++) {
+				if (($t->tablero[$j][$i]->obtener_color()) == 'rojo')
 					$rojas++;
-		
-				else if (($t->tablero[$i][$j]->obtener_color()) == 'azul')
+
+				else if (($t->tablero[$j][$i]->obtener_color()) == 'azul')
 					$azules++;
-			
-				else $blancas++;
 			}
 		}
 		
 		// verificamos si el numero de fichas colocadas es el correcto
 		$this->assertTrue( ($azules == 4) && ($rojas == 4) && ($blancas == ($w*$h-$rojas-$azules)) );
-	}	
-	
+	}
+
 	public function test_clear()
 	{
-		$w = 6;
-		$h = 9;
-
-		$t = new Tablero($w, $h);
-
-		$t->mostrar_tablero();
-
+		$w=6;
+		$h=9;
+		$t = new Tablero($w,$h);
+	
 		$fichas = array();
 
 		for ($i=0; $i<8; $i++) {
@@ -81,16 +74,14 @@ class BoardTest extends TestCase
 		}
 
 		for ($i=0; $i<8; $i++) {
-			$r1 = rand(0,5);
-			$r2 = rand(0,5);
-			
-			while ($t->ficha_en_casilla($r1,$r2)) {
-				$r1 = rand(0,5);
-				$r2 = rand(0,5);
-			}
-			$t->soltar_ficha($r1,$r2,$fichas[$i]);
-			}
-		
+			$r1 = rand(0,$w-1);
+
+			while ($t->ficha_en_casilla($r1,$i)) 
+				$r1 = rand(0,$w-1);
+
+			$t->soltar_ficha($r1,$fichas[$i]);
+		}	
+
 		//!!
 		$t->limpiar_tablero();
 
@@ -98,20 +89,17 @@ class BoardTest extends TestCase
 		$rojas = 0;
 		$blancas = 0;
 
-
-		for ($i=0; $i<$w; $i++) {
-			for ($j=0; $j<$h; $j++) {
-				if (($t->tablero[$i][$j]->obtener_color()) == 'rojo')
+		for ($i=0; $i<$h; $i++) {
+			for ($j=0; $j<$w; $j++) {
+				if (($t->tablero[$j][$i]->obtener_color()) == 'rojo')
 					$rojas++;
-		
-				else if (($t->tablero[$i][$j]->obtener_color()) == 'azul')
+
+				else if (($t->tablero[$j][$i]->obtener_color()) == 'azul')
 					$azules++;
-			
-				else $blancas++;
 			}
 		}
 		
 		// verificamos la correcta limpieza del tablero
 		$this->assertTrue( ($azules == 0) && ($rojas == 0) && ($blancas == ($w*$h)) );				
 	}
-}
+}	
