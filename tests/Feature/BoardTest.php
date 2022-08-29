@@ -54,6 +54,7 @@ class BoardTest extends TestCase
 
 				else if (($t->tablero[$j][$i]->obtener_color()) == 'azul')
 					$azules++;
+				else $blancas++;
 			}
 		}
 		
@@ -96,6 +97,7 @@ class BoardTest extends TestCase
 
 				else if (($t->tablero[$j][$i]->obtener_color()) == 'azul')
 					$azules++;
+				else $blancas++;
 			}
 		}
 		
