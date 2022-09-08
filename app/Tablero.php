@@ -9,15 +9,12 @@ use InvalidPiecePositionException;
 
 interface InterfazTablero {
 	public function limpiar_tablero();
-	public function ficha_en_casilla(int $posY, int $posX) : bool;
-	public function soltar_ficha(int $posY, $posX, Ficha $f);
+	public function ficha_en_casilla(int $posY, int $posX);
+	public function soltar_ficha(int $posX, Ficha $f);
 	public function mostrar_tablero();
 }
 
-
-
-// el tablero usa la convencion de (ordenada, abcisa) no se si dejarlo asi :snamespace App;
-class Tablero {
+class Tablero implements InterfazTablero {
 
 	protected int $width;
 	protected int $height;
@@ -26,8 +23,8 @@ class Tablero {
 	// volver el tablero a su estado inicial (todos los espacios blancos)
 	public function limpiar_tablero() {
 
-		for ($y=0; $y<$this->width; $y++) {
-			for ($x=0; $x<$this->height; $x++) {
+		for ($x=0; $x<$this->height; $x++) {
+			for ($y=0; $y<$this->width; $y++) {
 				$this->tablero[$y][$x] = new Ficha("blanco");
 			}
 		}
@@ -53,39 +50,40 @@ class Tablero {
 	}
 	
 	// suelta la ficha
-	public function soltar_ficha(int $posY, $posX, Ficha $f) {
+	public function soltar_ficha(int $posX, Ficha $f) {
 		
-		if (!($posX <= $this->width && $posY <= $this->height)) {
+		if ($this->width-1 < $posX || $posX < 0) {
 			throw new InvalidPiecePositionException("Se esta intentando colocar una ficha por fuera de las dimensiones del tablero");
 			return;
 		}
-		
-		if ($this->ficha_en_casilla($posY, $posX)) {
-			throw new PiecesOverlappingException("Se esta intentando colocar una pieza donde ya se encuentra otra");
-			return;
-		}
-			
-	
-	$this->tablero[$posY][$posX] = $f;
 
+		$i = $this->height;
+		
+		while(--$i>0) {
+			if (!$this->ficha_en_casilla($posX,$i)) {
+				$this->tablero[$posX][$i] = $f;
+				break;
+			}
+		}
 	}
 	
 	// mostrar contenido del tablero actual
 	public function mostrar_tablero() {
+		$title="TABLERO DE JUEGO";
 		
-		echo "\n" . str_repeat('-', $this->width) . "\n";
-		echo "TABLERO DE JUEGO";
-		echo "\n" . str_repeat('-', $this->width) . "\n";
+		echo "\n" . str_repeat('-', strlen($title)) . "\n";
+		echo $title;
+		echo "\n" . str_repeat('-', strlen($title)) . "\n";
 		
-		for ($x=0; $x<$this->height; $x++) {
+		for ($x=0; $x<$this->width; $x++) {
 			if ($x==0) echo "\t" . $x . "\t";
 			else echo $x . "\t";
 		}
 		echo "\n";
 		
-		for ($y=0; $y<$this->width; $y++) {
-			echo $y . "\t";
-			for ($x=0; $x<$this->height; $x++) {
+		for ($x=0; $x<$this->height; $x++) {
+			echo $x . "\t";
+			for ($y=0; $y<$this->width; $y++) {
 				echo $this->tablero[$y][$x]->obtener_color() . "\t";
 			}
 			echo "\n";
@@ -93,7 +91,3 @@ class Tablero {
 	}
 
 }
-
-
-?>
-
