@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class WinningTest extends TestCase {
 
-	public function test_winning_cases {
+	public function test_winning_cases() {
 	
 	$w=11;
 	$h=9;
