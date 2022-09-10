@@ -5,8 +5,14 @@ namespace App;
 
 
 interface InterfazResultado {
+	private function chequearFicha($i,$j,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 	public function obtenerGanadorVertical();
 	public function obtenerGanadorHorizontal();
+	public function obtenerGanadorSupDer();
+	public function obtenerGanadorInfDer();
+	public function obtenerGanadorSupIzq();
+	public function obtenerGanadorInfIzq();
+	public function salidaLinda($arr);
 }
 
 
@@ -48,14 +54,14 @@ class DeterminadorResultado implements InterfazResultado {
 
 	public function obtenerGanadorHorizontal() {
 
-		for ($i=0; $i<($this->tablero->height); $i++) {
+		for ($i=0; $i<($this->tablero->get_height()); $i++) {
 
 			$winnerPosRed = [];
 			$winnerPosBlue = [];
 			$azul=0;
 			$rojo=0;
 
-			for ($j=0; $j<($this->tablero->width); $j++ ) {
+			for ($j=0; $j<($this->tablero->get_width()); $j++ ) {
 				$vals = $this->chequearFicha($i,$j,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];
@@ -72,13 +78,13 @@ class DeterminadorResultado implements InterfazResultado {
 
 	public function obtenerGanadorVertical() {
 
-		for ($i=0; $i<($this->tablero->width); $i++) {
+		for ($i=0; $i<($this->tablero->get_width()); $i++) {
 			$winnerPosRed = [];
 			$winnerPosBlue = [];
 			$azul=0;
 			$rojo=0;
 
-			for ($j=0; $j<($this->tablero->height); $j++ ) {
+			for ($j=0; $j<($this->tablero->get_height()); $j++ ) {
 				$vals = $this->chequearFicha($i,$j,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];
@@ -96,14 +102,14 @@ class DeterminadorResultado implements InterfazResultado {
 	
 	public function obtenerGanadorSupDer() {
 
-		for ($i=0; $i<($this->tablero->width)-3; $i++) {
+		for ($i=0; $i<($this->tablero->get_width())-3; $i++) {
 
 			$winnerPosRed = [];
 			$winnerPosBlue = [];
 			$azul=0;
 			$rojo=0;
 
-			for ($row=$i, $col=0; $row<($this->tablero->width) && $col<($this->tablero->height); $row++, $col++ ) {
+			for ($row=$i, $col=0; $row<($this->tablero->get_width()) && $col<($this->tablero->get_height()); $row++, $col++ ) {
 				$vals = $this->chequearFicha($col,$row,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];
@@ -121,14 +127,14 @@ class DeterminadorResultado implements InterfazResultado {
 		
 		public function obtenerGanadorInfIzq() {
 
-		for ($j=1; $j<($this->tablero->height)-3; $j++) {
+		for ($j=1; $j<($this->tablero->get_height())-3; $j++) {
 		
 			$azul=0;
 			$rojo=0;
 			$winnerPosBlue = [];
 			$winnerPosRed = [];
 			
-			for ($col=$j, $row=0; $col<($this->tablero->height) && $row<($this->tablero->width); $row++, $col++ ) {
+			for ($col=$j, $row=0; $col<($this->tablero->get_height()) && $row<($this->tablero->get_width()); $row++, $col++ ) {
 				$vals = $this->chequearFicha($col,$row,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];
@@ -154,7 +160,7 @@ class DeterminadorResultado implements InterfazResultado {
 			$winnerPosBlue = [];
 			$winnerPosRed = [];
 			
-			for ($col=$j, $row=0; $col>=0 && $row<($this->tablero->width); $row++, $col-- ) {
+			for ($col=$j, $row=0; $col>=0 && $row<($this->tablero->get_width()); $row++, $col-- ) {
 				print("row: " .$row . " col: " . $col . "\n");
 				$vals = $this->chequearFicha($col,$row,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
@@ -173,14 +179,14 @@ class DeterminadorResultado implements InterfazResultado {
 	
 	public function obtenerGanadorInfDer() {
 	
-		for ($i=1; $i<($this->tablero->width)-3; $i++) {
+		for ($i=1; $i<($this->tablero->get_width())-3; $i++) {
 		
 			$azul=0;
 			$rojo=0;
 			$winnerPosBlue = [];
 			$winnerPosRed = [];
 			
-			for ($row=$i, $col=($this->tablero->height)-1; $row<$this->tablero->width && $col>=0; $row++, $col-- ) {
+			for ($row=$i, $col=($this->tablero->get_height())-1; $row<($this->tablero->get_width()) && $col>=0; $row++, $col-- ) {
 				print("row: " .$row . " col: " . $col . "\n");
 				$vals = $this->chequearFicha($col,$row,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
