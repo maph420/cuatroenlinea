@@ -134,6 +134,16 @@ class WinningTest extends TestCase {
 		$t->soltar_ficha(8, $fichaRoja);
 	}	
 	
+	$t->limpiar_tablero();
+
+	
+	for ($i=0; $i<9; $i++) {
+		$t->soltar_ficha(3, $fichaRoja);
+		$t->soltar_ficha(4, $fichaRoja);
+		$t->soltar_ficha(5, $fichaRoja);
+		$t->soltar_ficha(6, $fichaRoja);
+	}	
+	
 	$t->mostrar_tablero();	
 	
 	/*
@@ -145,7 +155,7 @@ class WinningTest extends TestCase {
 	* * * * *
 	
 	*/
-	
+
 	$this->assertTrue(count($ganadorSI = $d->obtenerGanadorSupIzq()) == 4);
 	print($d->salidaLinda($ganadorSI));
 	}

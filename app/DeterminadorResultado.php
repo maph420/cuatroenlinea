@@ -84,7 +84,7 @@ class DeterminadorResultado implements InterfazResultado {
 			$rojo=0;
 
 			for ($j=0; $j<($this->tablero->get_height()); $j++ ) {
-				$vals = $this->chequearFicha($i,$j,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
+				$vals = $this->chequearFicha($j,$i,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];
 				$winnerPosBlue= $vals[2];
@@ -124,7 +124,7 @@ class DeterminadorResultado implements InterfazResultado {
 		} return false;
 	}
 		
-		public function obtenerGanadorInfIzq() {
+		public function obtenerGanadorInfDer() {
 
 		for ($j=1; $j<($this->tablero->get_height())-3; $j++) {
 		
@@ -152,7 +152,7 @@ class DeterminadorResultado implements InterfazResultado {
 	
 		public function obtenerGanadorSupIzq() {
 	
-		for ($j=($this->tablero->height)-1; $j>=3; $j--) {
+		for ($j=($this->tablero->get_height())-1; $j>=3; $j--) {
 		
 			$azul=0;
 			$rojo=0;
@@ -160,7 +160,7 @@ class DeterminadorResultado implements InterfazResultado {
 			$winnerPosRed = [];
 			
 			for ($col=$j, $row=0; $col>=0 && $row<($this->tablero->get_width()); $row++, $col-- ) {
-				print("row: " .$row . " col: " . $col . "\n");
+				//print("row: " .$row . " col: " . $col . "\n");
 				$vals = $this->chequearFicha($col,$row,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];
@@ -176,7 +176,7 @@ class DeterminadorResultado implements InterfazResultado {
 	}
 }
 	
-	public function obtenerGanadorInfDer() {
+	public function obtenerGanadorInfIzq() {
 	
 		for ($i=1; $i<($this->tablero->get_width())-3; $i++) {
 		
@@ -186,7 +186,7 @@ class DeterminadorResultado implements InterfazResultado {
 			$winnerPosRed = [];
 			
 			for ($row=$i, $col=($this->tablero->get_height())-1; $row<($this->tablero->get_width()) && $col>=0; $row++, $col-- ) {
-				print("row: " .$row . " col: " . $col . "\n");
+				//print("row: " .$row . " col: " . $col . "\n");
 				$vals = $this->chequearFicha($col,$row,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 				$rojo = $vals[0];
 				$azul= $vals[1];

@@ -69,7 +69,7 @@ class Tablero implements InterfazTablero {
 
 		$i = $this->height;
 		
-		while(--$i>0) {
+		while(--$i>=0) {
 			if (!$this->ficha_en_casilla($posX,$i)) {
 				$this->tablero[$posX][$i] = $f;
 				break;
