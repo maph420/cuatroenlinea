@@ -5,7 +5,6 @@ namespace App;
 
 
 interface InterfazResultado {
-	private function chequearFicha($i,$j,$azul,$rojo,$winnerPosBlue,$winnerPosRed);
 	public function obtenerGanadorVertical();
 	public function obtenerGanadorHorizontal();
 	public function obtenerGanadorSupDer();
