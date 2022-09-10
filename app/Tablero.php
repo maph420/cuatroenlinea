@@ -12,6 +12,8 @@ interface InterfazTablero {
 	public function ficha_en_casilla(int $posY, int $posX);
 	public function soltar_ficha(int $posX, Ficha $f);
 	public function mostrar_tablero();
+	public function get_height();
+	public function get_width();
 }
 
 class Tablero implements InterfazTablero {
@@ -30,6 +32,14 @@ class Tablero implements InterfazTablero {
 		}
 
 	}
+
+	public function get_height() {
+		return $this->height;
+	} 
+
+	public function get_width() {
+		return $this->width;
+	} 
 
 	// llamada cada vez que se instancia un nuevo Tablero
 	public function __construct(int $width, int $height) {
@@ -59,7 +69,7 @@ class Tablero implements InterfazTablero {
 
 		$i = $this->height;
 		
-		while(--$i>0) {
+		while(--$i>=0) {
 			if (!$this->ficha_en_casilla($posX,$i)) {
 				$this->tablero[$posX][$i] = $f;
 				break;

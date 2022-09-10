@@ -5,6 +5,7 @@ on:
     branches:
     - master
     - ^[0-9]-.*
+    - 4-clase-determinador-resultado
   pull_request:
 
 jobs:
